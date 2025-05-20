@@ -1,0 +1,29 @@
+{
+    "el_ID": "QSA0001",
+    "el_Type": "shortAnswer",
+    "el_Text": "Write here your main question",
+    "el_RichText": "You can use this Rich text editor for prompt",
+    "correctionAxes" : [
+      { "axis" : "check if the answer is correct",
+        "point": 10,
+        "penalty" : 10
+      }, 
+      { "axis" : "check if the answer is clear",
+      "point": 10,
+      "penalty" : 10
+      },
+      { "axis" : "check if the answer is complete",
+      "point": 10,  
+      "penalty" : 10
+      }, 
+      { "axis" : "check if the answer is concise",
+      "point": 10,
+      "penalty" : 10
+      },
+      { "axis" : "check if all the expected elements are present",
+      "point": 10,  
+      "penalty" : 10
+      }        
+    ],
+    "isNewElement":false
+  }

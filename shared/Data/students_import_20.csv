@@ -1,0 +1,21 @@
+id;firstname;lastname;email;institution;sector;class;grade;location;zipcode;mailStatus;password
+200001;Alice;Smith;alice.smooth@example.com;Lycée Alpha;Science;A;1;Paris;75001;False;vimaju
+200002;Bob;Johnson;bobby.johnson@example.com;Lycée Beta;Math;A;2;Lyon;69002;False;vimaju
+200003;Charlie;Williams;charlie.williamson@example.com;Lycée Gamma;Literature;A;3;Marseille;13003;False;vimaju
+200004;David;Brown;david.browny@example.com;Lycée Delta;History;B;1;Toulouse;31000;False;vimaju
+200005;Emma;Jones;emma.jonessassa@example.com;Lycée Epsilon;Physics;B;2;Nice;06000;False;vimaju
+200006;Fiona;Miller;fiona.millerone@example.com;Lycée Zeta;Biology;B;3;Nantes;44000;False;vimaju
+200007;George;Davis;george.davisson@example.com;Lycée Eta;Chemistry;C;1;Strasbourg;67000;False;vimaju
+200008;Hannah;Garcia;hannah.garcialial@example.com;Lycée Theta;Engineering;C;2;Montpellier;34000;False;vimaju
+200009;Ian;Martinez;ian.martinezo@example.com;Lycée Iota;Law;C;3;Bordeaux;33000;False;vimaju
+2000010;Julia;Wilson;julia-herin.wilson@example.com;Lycée Kappa;Art;C;1;Lille;59000;False;vimaju
+2000011;Kevin;Anderson;kevin.anson@example.com;Lycée Lambda;Economics;A;2;Rennes;35000;False;vimaju
+2000012;Laura;Thomas;laura.thos@exe.com;Lycée Mu;Philosophy;A;3;Grenoble;38000;False;vimaju
+2000013;Michael;Harris;michael.hazarris@example.com;Lycée Nu;Music;A;1;Dijon;21000;False;vimaju
+2000014;Nina;Clark;nina.clarkos@example.com;Lycée Xi;Theater;B;2;Angers;49000;False;vimaju
+2000015;Oliver;Lewis;oliver.lewisossse@example.com;Lycée Omicron;Robotics;B;3;Le Havre;76600;False;vimaju
+2000016;Paula;Robinson;paula.robinsonones@example.com;Lycée Pi;Agriculture;B;1;Reims;51100;False;vimaju
+2000017;Quentin;Walker;quentin.walkeraza@example.com;Lycée Rho;Medicine;B;2;Toulon;83000;False;vimaju
+2000018;Rachel;Perez;rachel.perezazazzaa@example.com;Lycée Sigma;Psychology;B;3;Amiens;80000;False;vimaju
+2000019;Steve;Hall;steve.halloolooa@example.com;Lycée Tau;Astronomy;B;1;Metz;57000;False;vimaju
+2000020;Tina;Young;tina.youngandold@example.com;Lycée Upsilon;Geology;B;2;Limoges;87000;False;vimaju

@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6
+    restart: always
+    volumes:
+      - ./mongodb:/data/db
+    networks:
+      - waspl-network
+
+  waspleditor:
+    build: ./waspleditor
+    env_file:
+      - ./waspleditor/.env.docker
+    expose:
+      - "4000"
+    networks:
+      - waspl-network
+    depends_on:
+      - mongodb
+
+  waspltestrunner:
+    build: 
+      context: ./waspltestrunner
+      dockerfile: Dockerfile
+    env_file:
+      - ./waspltestrunner/.env.production.docker
+    expose:
+      - "3011"
+    networks:
+      - waspl-network
+    depends_on:
+      - mongodb
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: waspl-nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - waspleditor
+      - waspltestrunner
+    networks:
+      - waspl-network
+
+networks:
+  waspl-network:
+    driver: bridge
+    

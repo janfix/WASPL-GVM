@@ -1,0 +1,49 @@
+{
+  "name": "wasplrunner",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev-front\" \"npm run start\"",
+    "dev-front": "vite",
+    "build": "vite build --mode production",
+    "preview": "vite preview",
+    "start": "node server/index.js",
+    "start:docker": "sh ./scripts/wait-for-mongo.sh && node server/index.js"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.1",
+    "@fortawesome/fontawesome-svg-core": "^6.7.1",
+    "@fortawesome/free-brands-svg-icons": "^6.7.1",
+    "@fortawesome/free-regular-svg-icons": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "axios": "^1.6.2",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.3.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "html2canvas": "^1.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "konva": "^9.3.20",
+    "mongoose": "^8.9.5",
+    "node-cron": "^3.0.3",
+    "pinia": "^2.1.7",
+    "quill": "^2.0.3",
+    "tabulator-tables": "^6.3.0",
+    "validator": "^13.12.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "vuedraggable": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "concurrently": "^9.1.2",
+    "vite": "^6.0.5"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.9.5"
+  }
+}

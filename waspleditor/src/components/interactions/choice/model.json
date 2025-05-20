@@ -1,0 +1,29 @@
+    {
+      "el_ID": "QC001",
+      "el_Type": "choice",
+      "el_Text": "New main question for Choice interaction",
+      "el_RichText": "This is for a text stimulus or more acurate instructions",
+      "options": [
+        {
+          "id": "QC001_choice1",
+          "text": "choice 1",
+          "isCorrect": false,
+          "weight": 0
+        },
+        {
+          "id": "QC001_choice2",
+          "text": "choice 2",
+          "isCorrect": true,
+          "weight": 1
+        }      
+      ],
+      "multiple":false,
+      "maxScore": "1",
+      "feedback": {
+        "correct": "Correct ",
+        "incorrect": "Incorrect"
+      },
+      "tip": "some helpful hint",
+      "randomized" : true,
+      "isNewElement":false
+    }

@@ -1,0 +1,23 @@
+SHELL := /bin/bash
+
+prod:
+	@echo "🚀 Démarrage des services WASPL en mode PRODUCTION..."
+	docker compose up --build -d
+
+down:
+	@echo "🔝 Arrêt et suppression des containers..."
+	docker compose down --remove-orphans
+
+reset-db:
+	@echo "🤨 Suppression du dossier ./mongodb..."
+	rm -rf mongodb
+	@echo "🛉 Nettoyage des volumes Docker inutilisés..."
+	docker volume prune -f
+
+reset-all:
+	@echo "🛑 Arrêt et suppression des containers..."
+	docker compose down --remove-orphans
+	@echo "🗑️ Suppression des containers restants..."
+	docker ps -aq --filter "name=waspl" | xargs -r docker rm -f
+	@echo "🧼 Suppression des images Docker locales..."
+	docker rmi -f waspl-waspleditor waspl-waspltestrunner || true

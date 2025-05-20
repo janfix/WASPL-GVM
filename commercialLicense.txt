@@ -1,0 +1,47 @@
+COMMERCIAL LICENSE FOR WASPL
+Version 1.0 – [Date]
+
+This Commercial License (“the License”) is entered into between:
+
+[Name of the company or developer]
+Address: [Full address]
+Contact: [Professional email]
+
+And:
+
+[Client’s name]
+Address: [Full address]
+
+PURPOSE OF THE LICENSE
+
+This license allows the Licensee to use, modify, integrate, and redistribute the WASPL software in a proprietary or commercial context, without any obligation to disclose the source code or any modifications made, contrary to the terms of the AGPL v3 license.
+
+GRANTED RIGHTS
+
+The Licensee is authorized to:
+
+Use WASPL in its commercial products or services
+
+Modify the software for internal purposes
+
+Keep modifications private
+
+Access optional complementary services such as support, maintenance, or assisted deployment
+
+TERMS AND CONDITIONS
+
+This license is non-exclusive and non-transferable
+
+Pricing and included services are defined in a separate quotation
+
+The name “WASPL” must be mentioned in the legal notices or credits of any application using the software
+
+WARRANTY DISCLAIMER
+
+The software is provided “as is”, without any express or implied warranty. The Licensee assumes all risks associated with its use.
+
+TERM & TERMINATION
+
+This license is valid for an indefinite period unless terminated by either party in case of a serious breach of its terms.
+
+For any commercial inquiries, please contact: [contact@wiquid.fr]

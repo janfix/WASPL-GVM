@@ -1,0 +1,14 @@
+{
+    "el_ID": "QO-001",
+    "el_Type": "order",
+    "el_Text": "Put these labels in the right order ?",
+    "el_RichText": "Use this rich editor for Order interaction",
+    "labels": ["Item 1", "Item 2", "Item 3" ],
+    "feedback": {
+      "correct": "Correct !",
+      "incorrect": "Incorrect."
+    },
+    "weight": 1,
+    "tip": "",
+    "isNewElement":false
+  }

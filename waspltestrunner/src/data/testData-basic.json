@@ -1,0 +1,381 @@
+{
+  "ID": "0000001",
+  "title": "Climate change",
+  "type": "WASPL",
+  "isNew":false,
+  "version":"1.0.0",
+  "language":"en",
+  "navigation":"backPossible",
+  "progression":"linear",
+  "Description": "This test has 12 questions",
+  "submission":"eachQuestion",
+  "preset":"learning",
+  "Subject": "geography",
+  "location" : "UK",
+  "level" : "KS4",
+  "domain" : "Climate change",
+  "duration":"70",
+  "Keywords": [
+    "continent",
+    "country",
+    "lands"
+  ],
+  "metadata": {
+    "Author": "Janfix",
+    "Created": "9/2/2024",
+    "LastModif":"26/12/2024"
+  },
+  "pages": [
+    {
+      "id": 1,
+      "label": "Page 1",
+      "children": [
+        {
+          "id": "Q0001",
+          "label": "Question 1 choice"
+        },
+        {
+          "id": "Q0002",
+          "label": "Question 2 Choice australie"
+        },
+        {
+          "id": "Q0333",
+          "label": "M333 - message"
+        },
+        {
+          "id": "Q0077",
+          "label": "Q77 - shortAnswer"
+        },
+        {
+          "id": "Q0111",
+          "label": "Q111 - Order"
+        },
+        {
+          "id": "Q0222",
+          "label": "Q222 - textGaps"
+        }
+      ],
+      "Randomized": true
+    },
+    {
+      "id": 2,
+      "label": "Page 2",
+      "children": [
+        {
+          "id": "Q0003",
+          "label": "Question 3"
+        },
+        {
+          "id": "Q0004",
+          "label": "Question 4"
+        }
+      ],
+      "Randomized": true
+    },
+    {
+      "id": 3,
+      "label": "Page 3",
+      "children": [
+        {
+          "id": "Q0005",
+          "label": "Question 5"
+        }
+      ],
+      "Randomized": true
+    }
+  ],
+  "elements": [
+    {
+      "el_ID": "Q0333",
+      "el_Type": "message",
+      "el_Text": "This is a simple message ",
+      "el_RichText": "this is some text from Quill FOR MESSAGE",
+      "isNew":false,
+      "language":"fr"
+    },
+    {
+      "el_ID": "Q0222",
+      "el_Type": "textGaps",
+      "el_Text": "Remplir les trous qu'il y a dans ce texte  ?",
+      "el_RichText": "",
+      "el_GapsedText" : "<h1>Beautiful day</h1><p>This <span class='gap'>test </span>is a high level <span class='gap'>text </span>with <span class='gap'>cold </span>ice and the <span class='gap'>history </span>of <span class='gap'>Water </span>ball and <span class='gap'>guns</span>.</p>",
+      "gaps": [{"id": 0, "label":"test", "weight":1},
+               {"id": 1,"label":"text", "weight":1},
+               {"id": 2,"label":"cold", "weight":1},
+               {"id": 3,"label":"history", "weight":1},
+               {"id": 4,"label":"Water", "weight":1},
+               {"id": 5,"label":"guns", "weight":1}],
+      "maxScore": "6",
+      "feedback": {
+        "correct": "Correct !",
+        "incorrect": "Incorrect."
+      },
+      "tip": "",
+      "isNew":false,
+      "language":"fr"
+    },
+    {
+      "el_ID": "Q0111",
+      "el_Type": "order",
+      "el_Text": "Dans quel ordre ranger les choses  ?",
+      "el_RichText": "this is some text from Quill FOR ORDER INTERACTION",
+      "labels": ["très chaud", "Chaud", "tiède", "froid", "très froid"],
+      "maxScore": "1",
+      "feedback": {
+        "correct": "Order correct !",
+        "incorrect": "Order Incorrect. Please try again !"
+      },
+      "tip": "",
+      "isNew":false,
+      "language":"fr",
+       "weight" : 5
+    },
+    {
+      "el_ID": "Q0077",
+      "el_Type": "shortAnswer",
+      "el_Text": "How do you keep you up to date on climate change?",
+      "el_RichText": "Please be precise and give examples.",
+      "correctionAxes" : [{
+          "axis" : "GIEC report is mentionned",
+          "point": 10,
+          "penalty" : 10
+        }, 
+        {
+          "axis":"A clear distinction between weather and climat change is exposed",
+          "point": 5,
+          "penalty" : 5
+        },
+        {
+          "axis" : "at least 2 valide examples are mentionned",
+          "point" : 5,
+          "penalty" : 5
+        },
+        {
+          "axis" : "the answer is focused on climate change",
+          "point" : 1,
+          "penalty" : 1
+        }
+      ],
+      "isNew":false,
+      "language":"fr"
+      
+    },
+    {
+      "el_ID": "Q0001",
+      "el_Type": "choice",
+      "el_Text": "Quel pays est dans l'hémisphère sud ?",
+      "el_RichText": "this is some Terrible Text FROM QUILL 1",
+      "options": [
+        {
+          "id": "Q0001_choice1",
+          "text": "France",
+          "isCorrect": false,
+          "weight": 0
+        },
+        {
+          "id": "Q0001_choice2",
+          "text": "Brésil",
+          "isCorrect": true,
+          "weight": 1
+        },
+        {
+          "id": "Q0001_choice3",
+          "text": "Allemagne",
+          "isCorrect": false,
+          "weight": 0
+        },
+        {
+          "id": "Q0001_choice4",
+          "text": "Canada",
+          "isCorrect": false,
+          "weight": 0
+        }
+      ],
+      "multiple":false,
+      "maxScore": "1",
+      "feedback": {
+        "correct": "Correct ! Le Brésil est dans l'hémisphère sud.",
+        "incorrect": "Incorrect. La bonne réponse est le Brésil."
+      },
+      "tip": "Salsa !",
+      "randomized" : true,
+      "isNew":false,
+      "language":"fr"
+    },
+    {
+      "el_ID": "Q0002",
+      "el_Type": "choice",
+      "el_Text": "Quelles sont les plus belles ville d'Australie?",
+      "el_RichText": "this is some text from Quill, This is not AMerica for QUILL2",
+      "options": [
+        {
+          "id": "Q0002_choice1",
+          "text": "Sydney",
+          "isCorrect": false,
+          "weight": 0
+        },
+        {
+          "id": "Q0002_choice2",
+          "text": "Melbourne",
+          "isCorrect": true,
+          "weight": 1
+        },
+        {
+          "id": "Q0002_choice3",
+          "text": "Canberra",
+          "isCorrect": true,
+          "weight": 1
+        },
+        {
+          "id": "Q0002_choice4",
+          "text": "Brisbane",
+          "isCorrect": false,
+          "weight": 0
+        }
+      ],
+      "multiple":true,
+      "maxScore": "2",
+      "feedback": {
+        "correct": "Correct ! Les plus belles ville d'Australie sont Melbourne et Canberra.",
+        "incorrect": "Incorrect. Essayez encore en vous concentrant sur la véritable beauté du Monde."
+      },
+      "randomized" : true,
+      "tip": "KANGOUROU"
+    },
+    {
+      "el_ID": "Q0003",
+      "el_Type": "choice",
+      "el_Text": "Quelle mer borde l'Egypte ?",
+      "el_RichText": "this is some text from Quill",
+      "options": [
+        {
+          "id": "Q0003_choice1",
+          "text": "Mer Méditerranée",
+          "isCorrect": true,
+          "weight": 1
+        },
+        {
+          "id": "Q0003_choice2",
+          "text": "Mer Noire",
+          "isCorrect": false,
+          "weight":0
+        },
+        {
+          "id": "Q0003_choice3",
+          "text": "Mer Baltique",
+          "isCorrect": false,
+          "weight":0
+        },
+        {
+          "id": "Q0003_choice4",
+          "text": "Mer d'Arabie",
+          "isCorrect": false,
+          "weight":0
+        }
+      ],
+      "multiple":false,
+      "maxScore": "1",
+      "feedback": {
+        "correct": "Correct ! L'Egypte est bordée par la mer Méditerranée.",
+        "incorrect": "Incorrect. La bonne réponse est la mer Méditerranée."
+      },
+      "tip": "",
+      "randomized" : true,
+      "isNew":false,
+      "language":"fr"
+    },
+    {
+      "el_ID": "Q0004",
+      "el_Type": "choice",
+      "el_Text": "Quelle est la plus grande île du monde ?",
+      "el_RichText": " ",
+      "options": [
+        {
+          "id": "Q0004_choice1",
+          "text": "Groenland",
+          "isCorrect": true,
+          "weight": 1
+        },
+        {
+          "id": "Q0004_choice2",
+          "text": "Australie",
+          "isCorrect": false,
+          "weight":0
+        },
+        {
+          "id": "Q0004_choice3",
+          "text": "Nouvelle-Guinée",
+          "isCorrect": false,
+          "weight":0
+        },
+        {
+          "id": "Q0004_choice4",
+          "text": "Madagascar",
+          "isCorrect": false,
+          "weight":0
+        }
+      ],
+      "multiple":false,
+      "maxScore": "1",
+      "feedback": {
+        "correct": "Correct ! Le Groenland est la plus grande île du monde.",
+        "incorrect": "Incorrect. La bonne réponse est le Groenland."
+      },
+      "randomized" : false,
+      "tip": ""
+    },
+    {
+      "el_ID": "Q0005",
+      "el_Type": "choice",
+      "el_Text": "Quelle est la montagne la plus haute du monde ?",
+      "el_RichText": "this is some text from Quill",
+      "options": [
+        {
+          "id": "Q0005_choice1",
+          "text": "Mont Everest",
+          "isCorrect": true,
+          "weight": 1
+        },
+        {
+          "id": "Q0005_choice2",
+          "text": "Mont Kilimandjaro",
+          "isCorrect": false,
+          "weight":0
+        },
+        {
+          "id": "Q0005_choice3",
+          "text": "Mont Blanc",
+          "isCorrect": false,
+          "weight":0
+        },
+        {
+          "id": "Q0005_choice4",
+          "text": "Mont McKinley",
+          "isCorrect": false,
+          "weight":0
+        }
+      ],
+      "multiple":false,
+      "maxScore": "1",
+      "feedback": {
+        "correct": "Correct ! Le Mont Everest est la montagne la plus haute du monde.",
+        "incorrect": "Incorrect. La bonne réponse est le Mont Everest."
+      },
+      "randomized" : true,
+      "tip": "BANANA",
+      "isNew": true,
+      "language":"fr"
+    }
+  ],
+  "settings": {
+    "timeLimit": true,
+    "shuffleQuestions": true,
+    "shufflePages": true,
+    "NavigationPanel": true,
+    "progressBar": true,
+    "feedbackAllowed": true,
+    "directScore_FB": true,
+    "countDown" : true,
+    "skip" : true
+  }
+}

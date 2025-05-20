@@ -1,0 +1,81 @@
+<svg
+   width="16"
+   height="16"
+   viewBox="0 0 4.2333333 4.2333333"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   sodipodi:docname="icgap.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="22.919307"
+     inkscape:cx="20.375834"
+     inkscape:cy="13.133032"
+     inkscape:window-width="1680"
+     inkscape:window-height="1250"
+     inkscape:window-x="1256"
+     inkscape:window-y="112"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient2"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#6565ff;stop-opacity:0.59786497;"
+         offset="0"
+         id="stop2" />
+      <stop
+         style="stop-color:#6565ff;stop-opacity:0;"
+         offset="1"
+         id="stop3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2"
+       id="linearGradient3"
+       x1="0.151748"
+       y1="2.1275167"
+       x2="4.0056223"
+       y2="2.1275167"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:0.597865;stroke:#6572d8;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2"
+       width="3.994267"
+       height="3.9942667"
+       x="0.13852954"
+       y="0.13852951" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.83424px;fill:#6565ff;fill-opacity:0.59786499;stroke:#6572d8;stroke-width:0.22928;stroke-opacity:1"
+       x="0.16339113"
+       y="2.7934139"
+       id="text2"
+       transform="scale(1.0299487,0.97092212)"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-size:1.83424px;stroke-width:0.22928;fill:#6565ff;fill-opacity:0.59786499;stroke:#6572d8;stroke-opacity:1"
+         x="0.16339113"
+         y="2.7934139">GAP</tspan></text>
+  </g>
+  </svg>

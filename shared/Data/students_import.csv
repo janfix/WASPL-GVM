@@ -1,0 +1,11 @@
+id;firstname;lastname;email;institution;sector;class;grade;location;zipcode;mailStatus;password
+100001;Alice;Smith;alice.smith@example.com;Lycée Alpha;Science;A;1;Paris;75001;False;vimaju
+100002;Bob;Johnson;bob.johnson@example.com;Lycée Beta;Math;A;2;Lyon;69002;False;vimaju
+100003;Charlie;Williams;charlie.williams@example.com;Lycée Gamma;Literature;B;3;Marseille;13003;False;vimaju
+100004;David;Brown;david.brown@example.com;Lycée Delta;History;C;1;Toulouse;31000;False;vimaju
+100005;Emma;Jones;emma.jones@example.com;Lycée Epsilon;Physics;A;2;Nice;6000;False;vimaju
+100006;Fiona;Miller;fiona.miller@example.com;Lycée Zeta;Biology;A;3;Nantes;44000;False;vimaju
+100007;George;Davis;george.davis@example.com;Lycée Eta;Chemistry;C;1;Strasbourg;67000;False;vimaju
+100008;Hannah;Garcia;hannah.garcia@example.com;Lycée Theta;Engineering;B;2;Montpellier;34000;False;vimaju
+100009;Ian;Martinez;ian.martinez@example.com;Lycée Iota;Law;B;3;Bordeaux;33000;False;vimaju
+1000010;Julia;Wilson;julia.wilson@example.com;Lycée Kappa;Art;B;1;Lille;59000;False;vimaju

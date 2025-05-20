@@ -1,0 +1,54 @@
+LICENCE COMMERCIALE POUR WASPL
+Version 1.0 - [Date]
+
+Ce contrat de licence commerciale (“la Licence”) est conclu entre :
+
+[Nom de la société ou développeur]
+Adresse : [Adresse complète]
+Contact : [Email professionnel]
+
+Et :
+
+[Nom du client]
+Adresse : [Adresse complète]
+
+---
+
+OBJET DE LA LICENCE
+
+Cette licence permet au Licencié d’utiliser, modifier, intégrer et redistribuer le logiciel WASPL dans un contexte propriétaire ou commercial, sans obligation de rendre public le code source ou les modifications effectuées, contrairement aux conditions de la licence AGPL v3.
+
+---
+
+DROITS ACCORDÉS
+
+Le Licencié est autorisé à :
+
+- Utiliser WASPL dans ses produits ou services commerciaux
+- Modifier le logiciel à des fins internes
+- Ne pas publier les modifications
+- Bénéficier de services complémentaires (optionnels) comme le support, la maintenance ou le déploiement assisté
+
+---
+
+CONDITIONS
+
+- Cette licence est non-exclusive, non-transférable.
+- Le prix et les services inclus sont définis dans un devis séparé.
+- Le nom de WASPL doit être mentionné dans les mentions légales ou crédits de l’application utilisant le logiciel.
+
+---
+
+LIMITATION DE GARANTIE
+
+Le logiciel est fourni "tel quel", sans garantie explicite ou implicite. Le licencié assume tous les risques liés à son utilisation.
+
+---
+
+DURÉE & RÉSILIATION
+
+Cette licence est valable pour une durée indéterminée, sauf résiliation par l'une des parties pour manquement grave aux conditions.
+
+---
+
+Pour toute demande commerciale, contacter : [contact@wiquid.fr]

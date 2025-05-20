@@ -1,0 +1,29 @@
+{
+  "el_ID": "CB001",
+  "el_Type": "choiceBlock",
+  "el_Text": "New main question for ChoiceBlock interaction",
+  "el_RichText": "",
+  "options": [
+    {
+      "id": "CB001_block1",
+      "richText": "<p>Texte ou image</p>",
+      "isCorrect": false,
+      "weight": 0
+    },
+    {
+      "id": "CB001_block2",
+      "richText": "<p>Autre contenu</p>",
+      "isCorrect": true,
+      "weight": 1
+    }
+  ],
+  "multiple": false,
+  "maxScore": 1,
+  "feedback": {
+    "correct": "Bravo !",
+    "incorrect": "Dommage !"
+  },
+  "tip": "Pensez à bien lire l'intitulé",
+  "randomized": true,
+  "isNewElement": false
+}

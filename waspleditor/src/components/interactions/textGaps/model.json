@@ -1,0 +1,20 @@
+{
+    "el_ID": "QTG0001",
+    "el_Type": "textGaps",
+    "el_Text": "Fill the gaps !",
+    "el_RichText": "Add formated text or image using the rich Editor  ",
+    "el_GapsedText" : "<h1>Beautiful day</h1><p>This <span class='tagged' style='background-color: yellow;'>test </span>is a high level <span class='tagged' style='background-color: yellow;'>text </span>with <span class='tagged' style='background-color: yellow;'>cold </span>ice and the <span class='tagged' style='background-color: yellow;'>history </span>of <span class='tagged' style='background-color: yellow;'>Water </span>ball and <span class='tagged' style='background-color: yellow;'>guns</span>.</p>",
+    "gaps": [{"id": 0, "label":"test", "weight":1},
+               {"id": 1,"label":"text", "weight":1},
+               {"id": 2,"label":"cold", "weight":1},
+               {"id": 3,"label":"history", "weight":1},
+               {"id": 4,"label":"Water", "weight":1},
+               {"id": 5,"label":"guns", "weight":1}],
+    "maxScore": "6",
+    "feedback": {
+      "correct": "Correct !",
+      "incorrect": "Incorrect."
+    },
+    "tip": "",
+    "isNewElement":false
+  }

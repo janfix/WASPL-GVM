@@ -1,0 +1,18 @@
+{
+  "name": "waspl",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "generate:token": "node ./scripts/tokenGenerator.js",
+    "dev": "concurrently \"npm --prefix waspleditor run dev\" \"npm --prefix waspltestrunner run dev\"",  
+    "prod": "npm --prefix waspleditor run build && npm --prefix waspltestrunner run build && concurrently \"npm --prefix waspleditor run start\" \"npm --prefix waspltestrunner run start\""
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

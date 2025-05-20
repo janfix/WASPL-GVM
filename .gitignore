@@ -1,0 +1,58 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node Modules & Builds
+node_modules
+dist
+dist-ssr
+*.local
+.vite/
+.vitepress/
+
+
+secrets/
+
+# Environnement local
+
+
+
+# MongoDB Database (exclure les données persistantes)
+mongodb/
+
+
+
+# Dossiers et fichiers liés aux éditeurs
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Cache et fichiers temporaires
+.npm
+.yarn
+.pnpm
+.cache
+.tmp
+.eslintcache
+
+# Exclusion spécifique à Mac/Linux
+._*
+
+# Dossier partagé pour les ressources média
+/media/*
+!/media/.gitkeep
+
+# Archives locales npm
+*.tgz
+
