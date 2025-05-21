@@ -11,7 +11,7 @@ const selectedItem = ref(null); // <- ajout ici
 const tabulatorRef = ref(null); // ← pour accéder à la méthode reloadData
 
 const emit = defineEmits(['select-item']);
-const apiUrl = import.meta.env.VITE_API_BASE_URL + '/api/items';
+const apiUrl = import.meta.env.VITE_API_BASE_URL + '/items';
 
 function triggerFileSelect() {
   document.getElementById('file-input').click();
