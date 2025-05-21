@@ -44,7 +44,7 @@ const handleBellClick = () => {
   
   const fetchPublications = async () => {
     try {
-      const res = await api.get(import.meta.env.VITE_API_BASE_URL + '/api/publications');
+      const res = await api.get(import.meta.env.VITE_API_BASE_URL + '/publications');
       publications.value = res.data.data || [];
     } catch (err) {
       console.error('Erreur de récupération des publications :', err);

@@ -6,21 +6,24 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
 
   return {
-    base: env.VITE_BASE_URL || '/',
+    base: env.VITE_BASE_URL || "/",
     plugins: [vue()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        "@": path.resolve(__dirname, "./src"),
       },
     },
     server: {
       host: "0.0.0.0",
       port: Number(env.VITE_PORT) || 5173,
       strictPort: true,
+      proxy: {
+        "/media": "http://localhost:4000", // Toutes les requêtes vers /media sont transmises au backend
+      },
       watch: {
         usePolling: true,
       },
-/*       proxy: {
+      /*       proxy: {
         '/api': {
           target: env.VITE_API_URL || 'http://localhost:4000',
           changeOrigin: true,
@@ -37,7 +40,7 @@ export default defineConfig(({ mode }) => {
       sourcemap: true,
     },
     optimizeDeps: {
-      include: ['tabulator-tables'],
+      include: ["tabulator-tables"],
     },
   };
 });

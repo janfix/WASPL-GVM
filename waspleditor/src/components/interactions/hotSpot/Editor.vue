@@ -170,8 +170,10 @@ async function handleImageUpload(event) {
   const formData = new FormData();
   formData.append('image', file);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000/api';
+
   try {
-    const res = await fetch('http://localhost:4000/api/media/upload', {
+     const res = await fetch(`${API_BASE_URL}/media/upload`, {
       method: 'POST',
       body: formData
     });
@@ -185,16 +187,24 @@ async function handleImageUpload(event) {
     const relativePath = data.url;
     console.log("Chemin relatif reçu de l'API:", relativePath);
 
-    // Ne plus utiliser FileReader, mais plutôt l'URL complète
-    const fullImageUrl = `http://localhost:4000${relativePath.startsWith('/') ? '' : '/'}${relativePath}`;
-    console.log("URL complète pour l'affichage:", fullImageUrl);
+   // Utilise VITE_FRONTEND_URL ou window.location.origin pour l'affichage immédiat
+    const FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL || window.location.origin;
+
+    // Compose l'URL complète proprement (fonction utilitaire pour éviter // ou /manquant)
+    function joinUrl(base, path) {
+      if (base.endsWith('/') && path.startsWith('/')) return base + path.slice(1);
+      if (!base.endsWith('/') && !path.startsWith('/')) return base + '/' + path;
+      return base + path;
+    }
+    const fullImageUrl = joinUrl(FRONTEND_URL, relativePath);
+    console.log("URL complète pour l'affichage:", fullImageUrl);;
 
     // Pour l'affichage immédiat, utilisons l'URL complète
     // Mais stockons le chemin relatif pour la sauvegarde
     setBackgroundImage(fullImageUrl, relativePath);
 
     // Réinitialiser l'input file pour permettre de sélectionner à nouveau le même fichier
-    fileInput.value.value = '';
+    if (fileInput.value) fileInput.value.value = '';
   } catch (error) {
     console.error("Erreur lors du téléchargement de l'image:", error);
     alert("Erreur lors du téléchargement de l'image.");
