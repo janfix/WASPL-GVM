@@ -1,3 +1,33 @@
+<!-- Dans ItemList.vue, modifiez le template -->
+<template>
+  <div class="mb-3">
+    <div class="row">
+      <div class="col-1"> <img width="80px" src="../../assets/ItemBank.png" alt="item bank" class="ItemBank" /></div>
+      <div class="col-4"><h1 class="">Item Collection</h1></div>
+      <div class="col" style="text-align: right; padding-top:20px">
+        <input id="file-input" type="file" accept=".xml" class="d-none" @change="handleQtiImport" />
+        <button type="button" class="btn btn-primary" @click="triggerFileSelect">
+      Import QTI item
+    </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ItemCollectionContainer">
+    <h3>Item List</h3>
+    <!-- 🔧 CORRECTION: Utiliser URL relative comme StudentList -->
+    <TabulatorRemote 
+      ref="tabulatorRef" 
+      tableType="items" 
+      :apiUrl="`/items`"
+      :page-size="10" 
+      :columns="columns"
+      :filters="filters" 
+      @select-item="(item) => emit('select-item', item)" 
+    />
+  </div>
+</template>
+
 <script setup>
 import { ref,onMounted, defineExpose } from 'vue';
 import TabulatorRemote from '@/components/common/TabulatorRemote.vue';
@@ -7,21 +37,24 @@ import api from "@/services/axios";
 
 const items = ref([]); 
 const columns = itemColumns((id) => deleteItem(id));
-const selectedItem = ref(null); // <- ajout ici
-const tabulatorRef = ref(null); // ← pour accéder à la méthode reloadData
+const selectedItem = ref(null);
+const tabulatorRef = ref(null);
 
 const emit = defineEmits(['select-item']);
-const apiUrl = import.meta.env.VITE_API_BASE_URL + '/items';
+
+// 🔧 CORRECTION: Garder l'URL complète pour les autres appels API
+const fullApiUrl = import.meta.env.VITE_API_BASE_URL + '/items';
 
 function triggerFileSelect() {
   document.getElementById('file-input').click();
 }
 
-// Fonction pour charger les items depuis l’API
+// Fonction pour charger les items depuis l'API
 const loadItems = async () => {
   try {
     const response = await api.get('/items');
     items.value = response.data;
+    console.log('Items loaded:', items.value);
   } catch (error) {
     console.error('Failed to load items', error);
   }
@@ -29,6 +62,8 @@ const loadItems = async () => {
 
 // Appel initial
 onMounted(() => {
+  console.log("ITEM LIST MOUNTED")
+  console.log("correction 5 full columns tabletype")
   loadItems();
 });
 
@@ -36,7 +71,6 @@ onMounted(() => {
 defineExpose({
   reloadTable: () => tabulatorRef.value?.reloadData()
 });
-
 
 async function handleQtiImport(event) {
   const file = event.target.files[0];
@@ -50,7 +84,8 @@ async function handleQtiImport(event) {
 
       const token = localStorage.getItem('editortoken');
 
-      const res = await fetch(apiUrl, {
+      // 🔧 CORRECTION: Utiliser l'URL complète pour les appels POST
+      const res = await fetch(fullApiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,24 +94,23 @@ async function handleQtiImport(event) {
         body: JSON.stringify(converted),
       });
 
-      if (!res.ok) throw new Error('Erreur lors de l’envoi du JSON');
+      if (!res.ok) throw new Error('Erreur lors de l\'envoi du JSON');
       alert('✅ Item importé avec succès');
       tabulatorRef.value?.reloadData();
 
     } catch (e) {
       console.error('❌ Import QTI échoué', e);
-      alert('Erreur lors de l’import du fichier QTI');
+      alert('Erreur lors de l\'import du fichier QTI');
     }
   };
 
   reader.readAsText(file);
 }
 
-
 // 🧼 Fonction pour supprimer un item et mettre à jour la vue
 async function deleteItem(el_ID) {
   try {
-    await api.delete(`/items/${el_ID}`); // ou adapte le chemin si ce n’est pas /items
+    await api.delete(`/items/${el_ID}`);
 
     console.log(`✅ Item ${el_ID} supprimé`);
 
@@ -98,32 +132,6 @@ const onSearch = () => {
   ]
 }
 </script>
-
-<template>
-  <div class="mb-3">
-    <div class="row">
-      <div class="col-1"> <img width="80px" src="../../assets/ItemBank.png" alt="item bank" class="ItemBank" /></div>
-      <div class="col-4"><h1 class="">Item Collection</h1></div>
-      <div class="col" style="text-align: right; padding-top:20px">
-        <input id="file-input" type="file" accept=".xml" class="d-none" @change="handleQtiImport" />
-        <button type="button" class="btn btn-primary" @click="triggerFileSelect">
-      Import QTI item
-    </button>
-      </div>
-    </div>
-   
-    
-    
-   
-
-  </div>
-
-  <div class="ItemCollectionContainer">
-    <h3>Item List</h3>
-    <TabulatorRemote ref="tabulatorRef" table-type="items" :api-url="apiUrl" :page-size="10" :columns="columns"
-      :filters="filters" @select-item="(item) => emit('select-item', item)" />
-  </div>
-</template>
 
 <style scoped>
 .ItemCollectionContainer{
