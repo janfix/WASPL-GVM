@@ -10,8 +10,8 @@ services:
       - waspl-network
 
   waspleditor:
-   # build: ./waspleditor
-    image: europe-west1-docker.pkg.dev/gen-lang-client-0690155932/waspl-demo-repo/waspleditor:latest
+    build: ./waspleditor
+   # image: europe-west1-docker.pkg.dev/gen-lang-client-0690155932/waspl-demo-repo/waspleditor:latest
     env_file:
       - ./waspleditor/.env.docker
     expose:
@@ -22,10 +22,10 @@ services:
       - mongodb
 
   waspltestrunner:
-    #build: 
-     # context: ./waspltestrunner
-     # dockerfile: Dockerfile
-    image: europe-west1-docker.pkg.dev/gen-lang-client-0690155932/waspl-demo-repo/waspltestrunner:latest
+    build: 
+      context: ./waspltestrunner
+      dockerfile: Dockerfile
+    #image: europe-west1-docker.pkg.dev/gen-lang-client-0690155932/waspl-demo-repo/waspltestrunner:latest
     env_file:
       - ./waspltestrunner/.env.production.docker
     expose:

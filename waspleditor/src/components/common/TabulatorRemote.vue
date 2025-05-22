@@ -98,6 +98,7 @@ onMounted(() => {
     columns: props.columns,
     paginationSize: props.pageSize,
     paginationSizeSelector: [10, 20, 50],
+    index: "_id",
   };
 
   // 🧠 Mode local (data fournie en prop)
