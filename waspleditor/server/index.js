@@ -66,7 +66,7 @@ app.use(express.json({ limit: "10mb" })); // Parse JSON avec une limite de 10 Mo
 // === Configuration CORS (plus dynamique) ===
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH","OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"], 

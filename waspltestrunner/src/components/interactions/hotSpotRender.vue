@@ -411,7 +411,6 @@ function drawCanvas() {
     // Store the Konva Image node instance
     backgroundKonvaImage = new Konva.Image({
       image: imageObj,
-      // Size the image to the *intended* stage dimensions (match stage size)
       width: stage.width(),
       height: stage.height(),
       listening: false, // Background image shouldn't capture events
@@ -427,12 +426,28 @@ function drawCanvas() {
     // redrawPlacedStickers will be called after loading saved data in onMounted
   };
 
-  const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  const rawSrc = selectedElement.value?.el_Background || '';
+  const urlbase = import.meta.env.VITE_BASE_EDITOR || window.location.origin;
+  const rawSrc = selectedElement.value?.el_Background || '/images/europe.png';
   // Determine if the source is an absolute URL, starts with /, or relative
   const isAbsolute = /^https?:\/\//i.test(rawSrc);
   const isRooted = rawSrc.startsWith('/');
-  imageObj.src = isAbsolute ? rawSrc : (isRooted ? `${VITE_API_BASE_URL.replace(/\/$/, '')}${rawSrc}` : rawSrc);
+  
+  console.log( window.location.origin)
+  console.log( urlbase)
+  console.log( rawSrc)
+const badurl =  urlbase + rawSrc;
+
+const fixedUrl = badurl.replace(/([^:]\/)\/+/g, '$1');
+console.log(fixedUrl); // http://localhost:5173/media/Totoro.jpg
+
+imageObj.src = fixedUrl;
+
+/* imageObj.src = isAbsolute
+  ? rawSrc
+  : (isRooted
+      ? rawSrc // <--- c'est le plus important !
+      : rawSrc); */
+  
   console.log('[drawCanvas] image source:', imageObj.src);
 
   // Handle potential error loading image (optional)

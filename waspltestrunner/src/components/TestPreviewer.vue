@@ -63,8 +63,17 @@
       </div>
     </div>
 
-    <div v-else class="text-center mt-5">
+    <div v-else-if="loading" class="text-center mt-5">
       <p><i>Loading test preview…</i></p>
+    </div>
+
+    <div v-else-if="error" class="text-center mt-5">
+      <div class="alert alert-danger">
+        <h4>Erreur de chargement</h4>
+        <p>{{ error }}</p>
+        <small>Test ID: {{ testId }}</small>
+        <small>API URL: {{ apiUrl }}</small>
+      </div>
     </div>
 
     <Footer />
@@ -94,12 +103,13 @@ const props = defineProps({
 
 const route = useRoute()
 const testData = ref(null)
+const loading = ref(true)
+const error = ref(null)
 
 // fallback locaux pour preview autonome
 const readOnly = props.readOnly ?? true
 const lastPageReached = props.lastPageReached ?? false
 const answers = props.answers ?? {}
-/* const questionIndexMap = props.questionIndexMap ?? [] */
 const onSendResults = props.onSendResults ?? (() => { })
 const stopTimer = props.stopTimer ?? false
 
@@ -126,11 +136,9 @@ const onPrevPage = isAutonomous
   }
   : props.onPrevPage;
 
-
 defineEmits(['time-up', 'toggle-test-map'])
 
 const testId = route.query.testId
-
 
 const handleNavigateToPage = isAutonomous
   ? (pageIndex) => {
@@ -139,8 +147,24 @@ const handleNavigateToPage = isAutonomous
   }
   : props.handleNavigateToPage;
 
+// 🔧 Configuration dynamique des URLs API
+const isDocker = import.meta.env.VITE_DOCKER_ON === "istrue";
 
-  const questionIndexMap = computed(() => {
+const apiUrl = computed(() => {
+  if (!testId) return '';
+
+  if (isDocker) {
+    // En mode Docker, utiliser l'URL interne
+    const dockerApiBase = import.meta.env.VITE_TESTRUNNER_API;
+    return `${dockerApiBase}/tests/${testId}`;
+  } else {
+    // En mode dev, utiliser l'URL de l'API backend
+    const devApiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3011';
+    return `${devApiBase}/tests/${testId}`;
+  }
+});
+
+const questionIndexMap = computed(() => {
   if (!testData.value || !Array.isArray(testData.value.pages)) return {};
 
   let index = 1;
@@ -158,8 +182,6 @@ const handleNavigateToPage = isAutonomous
   return map;
 });
 
-
-
 const currentPage = computed(() => {
   const index = isAutonomous
     ? currentPageIndex.value
@@ -175,8 +197,6 @@ const currentPage = computed(() => {
   }
   return testData.value.pages[index];
 });
-
-
 
 function getQuestion(child) {
   const question = testData.value.elements.find(el => el.el_ID === child.id)
@@ -208,17 +228,45 @@ const renderedChildren = computed(() => {
   }).filter(Boolean);
 });
 
-
-
 onMounted(async () => {
   try {
-    const apiBase = import.meta.env.VITE_TESTRUNNER_API || 'http://localhost:5174';
-    const res = await fetch(`${apiBase}/tests/${testId}`);
-    testData.value = await res.json()
-    console.log("✅ testData reçu :", testData.value)
-    console.log("📄 page 1 :", testData.value.pages?.[0])
+    loading.value = true;
+    error.value = null;
+
+    console.log("🔍 Chargement du test avec ID:", testId);
+    console.log("🌐 URL API:", apiUrl.value);
+
+    if (!testId) {
+      throw new Error("Aucun ID de test fourni");
+    }
+
+    const res = await fetch(apiUrl.value, {
+      method: 'GET',
+      credentials: 'include',
+    });
+
+    console.log("📡 Réponse fetch:", res.status, res.statusText);
+
+    if (!res.ok) {
+      throw new Error(`Erreur HTTP ${res.status}: ${res.statusText}`);
+    }
+
+    const contentType = res.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      const textResponse = await res.text();
+      console.error("❌ Réponse non-JSON reçue:", textResponse.substring(0, 200));
+      throw new Error(`Réponse non-JSON reçue. Content-Type: ${contentType}`);
+    }
+
+    testData.value = await res.json();
+    console.log("✅ testData reçu :", testData.value);
+    console.log("📄 page 1 :", testData.value.pages?.[0]);
+
   } catch (err) {
-    console.error('❌ Erreur de chargement du test :', err)
+    console.error('❌ Erreur de chargement du test :', err);
+    error.value = err.message;
+  } finally {
+    loading.value = false;
   }
 })
 </script>

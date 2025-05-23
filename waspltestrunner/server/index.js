@@ -36,7 +36,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: process.env.VITE_BASE_EDITOR || 'http://localhost:5174' ,
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH","DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],

@@ -11,8 +11,6 @@ import * as bootstrap from 'bootstrap';
 
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
-console.log("From Main.js")
-console.log("🔍 ENV VITE_API_URL =", import.meta.env.VITE_API_URL);
 window.bootstrap = bootstrap;
 
 try {
