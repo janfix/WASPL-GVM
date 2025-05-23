@@ -5,13 +5,12 @@
     </button>
 
     <!-- Debug info (à supprimer en prod) -->
-   <!--  <div v-if="showDebug" class="debug-info">
+    <div v-if="showDebug" class="debug-info">
       <p><strong>Test ID:</strong> {{ store.testData._id }}</p>
       <p><strong>URL iframe:</strong> {{ testRunnerUrl }}</p>
       <p><strong>Docker mode:</strong> {{ isDocker }}</p>
       <p><strong>Base URL:</strong> {{ baseURL }}</p>
-      <p><strong>Token:</strong> {{ tokenDebug }}</p>
-    </div> -->
+    </div>
 
     <p v-if="!testRunnerUrl">Chargement de l'aperçu du test…</p>
 
@@ -32,8 +31,6 @@ import { useTestStore } from '../../stores/testStore';
 
 const store = useTestStore();
 
-const tokenDebug = ref(localStorage.getItem('token') || '⚠️ aucun');
-
 // Debug toggle (à supprimer en prod)
 let showDebug = import.meta.env.DEV;
 console.log("🔧 Debug mode:", showDebug);
@@ -43,18 +40,16 @@ const isDocker = import.meta.env.VITE_DOCKER_ON === "istrue";
 console.log("🐳 Docker mode:", isDocker);
 
 // 🔧 Configuration des URLs
-const token = localStorage.getItem('token');
 const testRunnerUrl = computed(() => {
-  const base = window.location.origin;
-  if (!store.testData._id || !token) return '';
+  if (!store.testData._id) return '';
 
   if (isDocker) {
     // En mode Docker, utiliser l'URL interne ou externe selon la config
-    //const dockerUrl = import.meta.env.VITE_TESTRUNNER_URL || 'http://localhost:5174';
-    return `${base}/testrunner/test-preview?testId=${store.testData._id}&token=${token}`;
+    const dockerUrl = import.meta.env.VITE_TESTRUNNER_URL || 'http://localhost:5174';
+    return `${dockerUrl}/test-preview?testId=${store.testData._id}`;
   } else {
     // En mode dev local
-    return `http://localhost:5174/test-preview?testId=${store.testData._id}&token=${token}`;
+    return `http://localhost:5174/test-preview?testId=${store.testData._id}`;
   }
 });
 

@@ -44,25 +44,25 @@ async function initStage() {
   const imageObj = new window.Image();
 
   // Récupérer l'URL de base du serveur pour les images (ex: http://localhost:4000 ou https://monappli.com)
-  const BASE_URL = import.meta.env.VITE_FRONTEND_URL || window.location.origin;
+  let BASE_URL = import.meta.env.VITE_FRONTEND_URL;
+  const editorURL = import.meta.env.VITE_BASE_URL;
 
-  // Calculer la source de l'image de fond
-  let imageSrc = "/images/europe.png"; // Valeur par défaut
+  const Docker_On = import.meta.env.VITE_DOCKER_ON; 
+  console.log(Docker_On)
 
-  if (selectedElement.value?.el_Background) {
-    const bg = selectedElement.value.el_Background;
-    if (bg.startsWith('http')) {
-      imageSrc = bg;
-    } else {
-      // On construit une URL complète en fonction du contexte (dev/prod)
-      imageSrc = `${BASE_URL}${bg.startsWith('/') ? '' : '/'}${bg}`;
-    }
-  } else {
-    // Fallback absolu aussi pour l'image par défaut (utile si ton nginx/proxy ne sert pas /images)
-    imageSrc = `${BASE_URL}/images/europe.png`;
+ let imageSrc = "media/europe.png"; 
+
+  if(Docker_On == "istrue"){
+    BASE_URL = window.location.origin   
+    console.log(BASE_URL)
+    console.log(selectedElement.value?.el_Background)
+    imageSrc =  selectedElement.value?.el_Background || `${BASE_URL}:4000/media/europe.png`;
+  } else{
+    console.log("NOT DOCKER")
+     imageSrc =  selectedElement.value?.el_Background || `${BASE_URL}/media/europe.png`;
   }
 
-  console.log("Chargement de l'image de fond :", imageSrc);
+  console.log("Chargement de l'image de fond par defaut:", imageSrc);
 
   imageObj.src = imageSrc;
 

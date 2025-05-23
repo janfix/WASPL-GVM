@@ -21,6 +21,7 @@ import { fileURLToPath } from 'url';
 import mediaRoutes from './routes/mediaRoutes.js';
 import sessionRoutes from './routes/sessionRoutes.js';
 import { initDefaultAdmin } from './utils/initDefaultAdmin.js'
+import cookieParser from 'cookie-parser';
 
 
 const app = express();
@@ -38,6 +39,7 @@ const isDev = !isProd;
 const wikiPath = path.join(__dirname, '../../wasplwiki');
 // 🔥 Sert le dossier 'media' commun à la racine pour tous les médias (images, etc.)
 const mediaPath = path.join(__dirname, '../../media');
+
 app.use('/media', express.static(mediaPath));
 app.use('/wiki', express.static(wikiPath));
 
@@ -66,12 +68,14 @@ app.use(express.json({ limit: "10mb" })); // Parse JSON avec une limite de 10 Mo
 // === Configuration CORS (plus dynamique) ===
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH","OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"], 
   })
 );
+
+app.use(cookieParser());
 
 // === Connexion à MongoDB avec gestion des erreurs ===
 const connectDB = async () => {

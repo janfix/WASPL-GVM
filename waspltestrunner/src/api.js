@@ -11,6 +11,20 @@ const API_BASE_URL =
 
 console.log("🚣‍♂️", API_BASE_URL)
 
+const urlParams = new URLSearchParams(window.location.search);
+const tokenFromUrl = urlParams.get("token");
+const reloadFlag = localStorage.getItem("token_reload_done");
+
+if (tokenFromUrl && !reloadFlag) {
+  console.log("🛠️ Token injecté, redémarrage nécessaire");
+  localStorage.setItem("token", tokenFromUrl);
+  localStorage.setItem("token_reload_done", "true");
+  window.location.href = window.location.pathname + window.location.search;
+}
+
+setTimeout(() => {
+  localStorage.removeItem("token_reload_done");
+}, 2000)
 
 const api = axios.create({
   baseURL: API_BASE_URL,

@@ -236,8 +236,8 @@ function drawCanvas() {
     redrawPlacedStickers(); // Draw existing stickers from data
   };
 
-  const VITE_FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL || window.location.origin;
-  const rawSrc = selectedElement.value?.el_Background || '/images/europe.png';
+/*   const VITE_FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL || window.location.origin;
+  const rawSrc = selectedElement.value?.el_Background || '/media/europe.png';
   // Determine if the source is an absolute URL, starts with /, or relative
   const isAbsolute = /^https?:\/\//i.test(rawSrc);
   const isRooted = rawSrc.startsWith('/');
@@ -253,7 +253,27 @@ imageObj.src = isAbsolute
   ? rawSrc
   : (isRooted
       ? rawSrc // <--- c'est le plus important !
-      : rawSrc);
+      : rawSrc); */
+
+ let BASE_URL = import.meta.env.VITE_FRONTEND_URL;
+  const editorURL = import.meta.env.VITE_BASE_URL;
+
+  const Docker_On = import.meta.env.VITE_DOCKER_ON; 
+  console.log(Docker_On)
+
+ let imageSrc = "media/europe.png"; 
+
+  if(Docker_On == "istrue"){
+    BASE_URL = window.location.origin   
+    console.log(BASE_URL)
+    
+    imageSrc = selectedElement.value?.el_Background || `${BASE_URL}:4000/media/europe.png`;
+  } else{
+    console.log("NOT DOCKER")
+     imageSrc = selectedElement.value?.el_Background ||`${BASE_URL}/media/europe.png`;
+  }
+
+imageObj.src = imageSrc;
 
   console.log('[drawCanvas] image source:', imageObj.src);
 

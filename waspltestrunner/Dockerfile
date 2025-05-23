@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y netcat-openbsd && apt-get clean
 
 # ✅ Définition de l'environnement de production uniquement ici
 ENV NODE_ENV=production
+# In PublicationList please uncomment the panel in the template
+ENV VITE_DEBUG_MODE=false 
 
 COPY .env.production.docker .env.production
 COPY package.json package-lock.json ./

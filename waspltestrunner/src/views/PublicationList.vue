@@ -149,6 +149,11 @@
     <button hidden class="btn btn-danger" @click="handleLogout">Disconnect</button>
   </div>
 
+<!-- <DebugPanel 
+    :publications="publications" 
+    @refresh-publications="fetchPublications" 
+  /> -->
+
   <Footer />
 
   <ModalStartTest v-if="showModal" :publication="selectedPublication" @confirm="confirmStartTest"
@@ -156,6 +161,8 @@
 
 
   <InfoModal ref="infoModalRef" />
+
+
 
 </template>
 
@@ -171,6 +178,7 @@ import Footer from './footer.vue';
 import InstructionList from './instructionList.vue';
 import ModalStartTest from './ModalStartTest.vue';
 import InfoModal from './infoModal.vue'
+import DebugPanel from '@/components/DebugPanel.vue'
 
 const publicationStore = usePublicationStore();
 const responsesStore = useResponsesStore();
