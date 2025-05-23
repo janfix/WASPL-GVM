@@ -17,6 +17,7 @@ import { verifySystemToken } from './middleware/systemAuth.js';
 import { fileURLToPath } from 'url';
 import cron from 'node-cron';
 import sessionRoutes from './routes/sessionRoutes.js';
+import studentAuth from './middleware/studentAuthMiddleware.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -196,7 +197,7 @@ app.get('/api/publications', auth, async (req, res) => {
 
 
 
-app.get('/api/tests/:id', async (req, res) => {
+app.get('/api/tests/:id', studentAuth, async (req, res) => {
   try {
     const test = await Test.findById(req.params.id);
     if (!test) {

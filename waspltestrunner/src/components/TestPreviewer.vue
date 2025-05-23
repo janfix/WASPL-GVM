@@ -87,6 +87,8 @@ import Footer from '../views/footer.vue'
 import { useRoute } from 'vue-router'
 import { ref, onMounted, computed } from 'vue'
 import { createInteraction } from '../interactions/InteractionFactory'
+import api from '../api'
+
 
 const props = defineProps({
   questionIndexMap: Array,
@@ -240,10 +242,8 @@ onMounted(async () => {
       throw new Error("Aucun ID de test fourni");
     }
 
-    const res = await fetch(apiUrl.value, {
-      method: 'GET',
-      credentials: 'include',
-    });
+   const res = await api.get(`/tests/${testId}`);
+testData.value = res.data;
 
     console.log("📡 Réponse fetch:", res.status, res.statusText);
 
