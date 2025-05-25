@@ -16,6 +16,8 @@ services:
       - ./waspleditor/.env.docker
     expose:
       - "4000"
+    volumes:
+      - ./media:/app/media 
     networks:
       - waspl-network
     depends_on:
@@ -30,6 +32,8 @@ services:
       - ./waspltestrunner/.env.production.docker
     expose:
       - "3011"
+    volumes:
+      - ./media:/app/media 
     networks:
       - waspl-network
     depends_on:

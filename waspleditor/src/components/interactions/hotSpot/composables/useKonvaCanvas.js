@@ -55,8 +55,13 @@ async function initStage() {
   if(Docker_On == "istrue"){
     BASE_URL = window.location.origin   
     console.log(BASE_URL)
+    console.log(import.meta.env.VITE_API_BASE_URL)
     console.log(selectedElement.value?.el_Background)
-    imageSrc =  selectedElement.value?.el_Background || `${BASE_URL}:4000/media/europe.png`;
+    if(selectedElement.value?.el_Background){
+        imageSrc = BASE_URL+selectedElement.value?.el_Background
+    } else{
+        imageSrc = `${BASE_URL}:4000/media/europe.png`
+    }
   } else{
     console.log("NOT DOCKER")
      imageSrc =  selectedElement.value?.el_Background || `${BASE_URL}/media/europe.png`;

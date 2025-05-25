@@ -8,7 +8,12 @@ const router = express.Router();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const mediaRoot = path.resolve(__dirname, '../../../media');
+
+// Définition des routes selon les contextes !
+const defaultMediaPath = path.resolve(__dirname, '../../../media');
+const mediaRoot = process.env.MEDIA_PATH 
+  ? path.resolve(process.env.MEDIA_PATH) 
+  : defaultMediaPath;
 
 // ✅ Route pour servir les images existantes
 router.get('/:filename', (req, res) => {
