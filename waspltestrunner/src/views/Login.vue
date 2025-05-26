@@ -1,26 +1,26 @@
 <template>
   <div class="login">
-    <h2>Connexion</h2>
+    <h2>{{ $t('Connection') }}</h2>
     <div v-if="showSessionExpired" class="alert-session-expired">
-  Votre session a expiré. Veuillez vous reconnecter.
-</div>
+      {{ $t('Your session has expired. Please sign in again.') }}
+    </div>
     <form @submit.prevent="handleLogin">
       <div>
-        <label>Email:</label>
-        <input type="email" v-model="email" required>
+        <label>{{ $t('Email') }}:</label>
+        <input type="email" v-model="email" required />
       </div>
       <div>
-        <label>Mot de passe:</label>
-        <input type="password" v-model="password" required>
+        <label>{{ $t('Password') }}:</label>
+        <input type="password" v-model="password" required />
       </div>
-      <button type="submit">Se connecter</button>
+      <button type="submit">{{ $t('Sign in') }}</button>
     </form>
   </div>
 </template>
 
 <script setup>
-import {computed, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router'
+import { computed, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
 
 const router = useRouter();
@@ -34,8 +34,8 @@ const password = ref('');
 const handleLogin = async () => {
   try {
     await authStore.login(email.value, password.value);
-    router.push('/Publications');// Redirige vers la page d'accueil
-    console.log('Redirection vers la page d\'accueil');
+    router.push('/Publications');
+    console.log("Redirection vers la page d'accueil");
     console.log(authStore.user.groups);
   } catch (error) {
     alert('Erreur de connexion');
@@ -53,13 +53,12 @@ const handleLogin = async () => {
   margin-bottom: 20px;
 }
 
-
 .login {
   max-width: 400px;
   padding: 20px;
-  background-color: #f9f9f9; /* Optionnel pour une meilleure visibilité */
-  border-radius: 8px; /* Ajout d'une bordure arrondie */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel pour un effet d'élévation */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -68,7 +67,7 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background-color: #f3f4f6; /* Optionnel pour un contraste agréable */
+  background-color: #f3f4f6;
 }
 
 form div {
@@ -89,11 +88,10 @@ button {
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 4px; /* Arrondi du bouton */
+  border-radius: 4px;
 }
 
 button:hover {
   background-color: #45a049;
 }
-
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <Navbar/>
+  
  <div class="aboutcontainer">
   <h1>Presentation of WASPL</h1>
 <p>

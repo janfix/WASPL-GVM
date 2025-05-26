@@ -22,7 +22,7 @@ import mediaRoutes from './routes/mediaRoutes.js';
 import sessionRoutes from './routes/sessionRoutes.js';
 import { initDefaultAdmin } from './utils/initDefaultAdmin.js'
 import cookieParser from 'cookie-parser';
-
+import previewTokenRoute from './routes/previewToken.js';
 
 const app = express();
 
@@ -109,7 +109,7 @@ app.use('/api/dev', addInteraction);
 app.use('/api/dev', scaffoldInteraction);
 app.use('/api/media', mediaRoutes);
 app.use('/api/sessions', sessionRoutes);
-
+app.use('/api', previewTokenRoute);
 
 const PORT = process.env.PORT || 4000;
 const HOST = "0.0.0.0"; // 🔥 Permet l’accès depuis Docker
@@ -162,13 +162,6 @@ app.get('/api/wiki-files', (req, res) => {
 app.get('/media-test', (req, res) => {
   res.sendFile(path.join(mediaPath, 'astro.png'));
 });
-
-
-
-
-
-
-
 
 startServer();
 

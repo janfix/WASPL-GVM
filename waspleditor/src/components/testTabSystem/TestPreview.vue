@@ -5,7 +5,7 @@
     </button>
 
     <!-- Debug info (à supprimer en prod) -->
-   <!--  <div v-if="showDebug" class="debug-info">
+    <!-- <div v-if="showDebug" class="debug-info">
       <p><strong>Test ID:</strong> {{ store.testData._id }}</p>
       <p><strong>URL iframe:</strong> {{ testRunnerUrl }}</p>
       <p><strong>Docker mode:</strong> {{ isDocker }}</p>
@@ -30,9 +30,11 @@
 import { ref, computed, watch } from 'vue';
 import { useTestStore } from '../../stores/testStore';
 
+
 const store = useTestStore();
 
 const tokenDebug = ref(localStorage.getItem('token') || '⚠️ aucun');
+console.log(tokenDebug)
 
 // Debug toggle (à supprimer en prod)
 let showDebug = import.meta.env.DEV;
@@ -46,9 +48,10 @@ console.log("🐳 Docker mode:", isDocker);
 const token = localStorage.getItem('token');
 const testRunnerUrl = computed(() => {
   const base = window.location.origin;
-  if (!store.testData._id || !token) return '';
+  //if (!store.testData._id || !token) return '';
 
   if (isDocker) {
+    console.log("TOKEN", token)
     // En mode Docker, utiliser l'URL interne ou externe selon la config
     //const dockerUrl = import.meta.env.VITE_TESTRUNNER_URL || 'http://localhost:5174';
     return `${base}/testrunner/test-preview?testId=${store.testData._id}&token=${token}`;

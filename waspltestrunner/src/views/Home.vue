@@ -1,5 +1,5 @@
 <template>
-   <Navbar/>
+  
   <div class="homeContainer">
     <h1 class="text-primary">Get ready {{ user.firstName }} to start the assessment session</h1>
     <div class="lead">The {{ testData.preset }} mode is activated.</div>

@@ -30,6 +30,19 @@ const studentAuthMiddleware = async (req, res, next) => {
     console.log("✅ Token décodé avec succès :", decoded);
 
     const studentId = decoded._id || decoded.id;
+
+    // 🎯 CAS SPÉCIAL : token généré pour mode PREVIEW depuis waspleditor
+    if (studentId === "preview") {
+      req.student = {
+        _id: "preview",
+        firstname: "Preview",
+        lastname: "Mode",
+        email: "preview@waspl.ai",
+      };
+      console.log("🎬 Mode preview autorisé sans étudiant");
+      return next();
+    }
+
     if (!studentId) {
       return res.status(401).json({ message: "Token invalide (pas d'ID)" });
     }

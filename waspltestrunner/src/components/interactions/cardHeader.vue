@@ -5,7 +5,7 @@
          
         </div>
         <div class="col badgeTypePosition">
-          <span class="badge bg-info">{{ elementType }}</span>
+          <span class="badge bg-info">{{ $t(elementType) }}</span>
         </div>
       </div>
     </div>
