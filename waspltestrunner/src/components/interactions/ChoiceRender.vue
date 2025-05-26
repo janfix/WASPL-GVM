@@ -69,7 +69,7 @@
             class="hintBT btn btn-primary btn-sm"
             :disabled="props.readOnly"
             >
-            Hint!
+            {{$t('Hint')}}!
           </button>
           <div v-if="showHint" class="hintMessage">{{ selectedElement.tip }} </div>
         </div>

@@ -1,19 +1,19 @@
 <template>
   <div class="card-footer" style="text-align: right;">
-    <button class="btn btn-primary btn-sm" @click="submitAnswers">Submit</button>
+    <button class="btn btn-primary btn-sm" @click="submitAnswers">{{$t('Submit')}}</button>
     <button
       v-if="showReport"
       class="btn btn-console btn-sm ml-2"
       @click="closeReport"
     >
-      Close Report
+      {{$t('Close Report')}}
     </button>
     <button
       class="btn btn-secondary btn-sm"
       @click="resetSelections"
       style="margin-left: 10px;"
     >
-      Reset
+      {{$t('Reset')}}
     </button>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">WASPL</a>
+      <a class="navbar-brand" href="#"><img src="@/assets/waspl.png" width="60px" alt="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -53,8 +53,8 @@
           {{ $t('Remaining Time') }}: {{ formattedTime }}
           <div class="spinner">⏳</div>
         </a>
-
-        <div class="dropdown text-end" @click="isUserOpen = !isUserOpen">
+</ul>
+<div class="dropdown text-end" @click="isUserOpen = !isUserOpen">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle">
             <img src="../../src/assets/student.png" alt="mdo" width="42" height="42" class="rounded-circle">
             {{ studentName }}
@@ -66,7 +66,6 @@
             <li hidden><a class="dropdown-item" href="#" @click="resetTimerForDebug">{{ $t('Reset Timer') }}</a></li>
           </ul>
         </div>
-</ul>
       </div>
     </div>
   </nav>

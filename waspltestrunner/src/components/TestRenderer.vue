@@ -35,7 +35,7 @@
               <p>{{ props.testData.Description }}</p>
             </div>
             <div v-if="!props.lastPageReached" class="col text-end" style="margin-right:30px">
-              <b>PAGE {{ props.currentPageIndex + 1 }}</b>
+              <b>{{ $t('Page') }} {{ props.currentPageIndex + 1 }}</b>
             </div>
           </div>
 
@@ -59,20 +59,20 @@
               <div class="row">
                 <div class="col">
                   <button v-if="showPrevButton" class="btn btn-primary me-2" @click="props.onPrevPage">
-                    Previous page
+                    {{ $t('Previous page') }}
                   </button>
                 </div>
                 <div class="col text-end">
                   <button
                     v-if="!props.lastPageReached && currentPage && props.currentPageIndex + 1 < props.testData.pages.length"
                     class="btn btn-primary" @click="handleNextPageWithValidation">
-                    Next Page
+                    {{ $t('Next Page') }}
                   </button>
 
                   <button
                     v-if="!props.lastPageReached && currentPage && props.currentPageIndex + 1 === props.testData.pages.length"
                     class="btn btn-primary sendToServer" @click="handleSendResultsWithValidation">
-                    Send Results
+                    {{ $t('Send Results') }}
                   </button>
                 </div>
               </div>
@@ -91,7 +91,7 @@
         aria-atomic="true" ref="unansweredToast">
         <div class="d-flex">
           <div class="toast-body">
-           You must answer all the questions before going on to the next page.
+            {{ $t('You must answer all the questions before going on to the next page') }}
           </div>
           <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
             aria-label="Close"></button>

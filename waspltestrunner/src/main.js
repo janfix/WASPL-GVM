@@ -23,7 +23,7 @@ window.bootstrap = bootstrap;
 
 const i18n = createI18n({
   legacy: false, // composition API
-  locale: 'fr', // langue par défaut
+  locale: 'en', // langue par défaut
   fallbackLocale: 'en',
   messages,
 });

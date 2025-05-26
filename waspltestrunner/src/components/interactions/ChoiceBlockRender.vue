@@ -25,7 +25,7 @@
 
         <!-- Hint -->
         <div v-if="displayHintButton" class="hintContainer mt-3">
-          <button class="btn btn-sm btn-primary" @click="showHint = true">Hint!</button>
+          <button class="btn btn-sm btn-primary" @click="showHint = true">{{$t('Hint')}}!</button>
           <div v-if="showHint" class="hintMessage mt-2">{{ selectedElement.tip }}</div>
         </div>
       </div>
