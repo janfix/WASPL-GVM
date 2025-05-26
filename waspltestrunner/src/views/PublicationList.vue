@@ -13,7 +13,7 @@
           <a href="/publications"
             class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img src="../assets/waspl.png" width="100px" style="margin-left: -100px;" />
-            <span  class="topbarTitle"> TEST SUMMARY</span>
+            <span  class="topbarTitle"> {{$t('TEST SUMMARY')}}</span>
           </a>
         </ul>
 
@@ -29,7 +29,7 @@
 
             <ul v-if="dropdownOpen" class="dropdown-menu text-small show"
               style="display: block; position: absolute; right: 0;">
-              <li><a class="dropdown-item" href="#" @click="handleLogout">Sign out</a></li>
+              <li><a class="dropdown-item" href="#" @click="handleLogout">{{$t('Sign out')}}</a></li>
             </ul>
           </div>
         </div>
@@ -40,8 +40,8 @@
 
   <div class="container ">
     <!-- Message de bienvenue -->
-    <h2>Welcome, {{ studentName }}!</h2>
-    <p class="text-muted">Here are your available tasks:</p>
+    <h2>{{$t('Welcome')}}, {{ studentName }}!</h2>
+    <p class="text-muted">{{$t('Here are your available tasks')}}:</p>
     <!-- Liste des publications -->
     <ul class="list-group custom-list">
       <li v-for="publication in publications" :key="publication._id"
@@ -59,13 +59,13 @@
             </span>
 
             <strong>{{ publication.publicationName }}</strong> |
-            Group: <strong>{{ publication.groupId?.groupName || 'Unknown Group' }}</strong> |
-            Test: <strong>{{ publication.testId?.title || 'Unknown Test' }}</strong>
+            {{$t('Group')}}: <strong>{{ publication.groupId?.groupName || 'Unknown Group' }}</strong> |
+            {{$t('Test')}}: <strong>{{ publication.testId?.title || 'Unknown Test' }}</strong>
 
             <br />
-            <small>📅 Available from: {{ formatDate(publication.startingDate) }}</small>
+            <small>📅 {{$t('Available from')}}: {{ formatDate(publication.startingDate) }}</small>
             -
-            <small>Until: {{ formatDate(publication.endDate) }}</small>
+            <small>{{$t('Until')}}: {{ formatDate(publication.endDate) }}</small>
             <br />
             <InstructionList :publication="publication" />
           </div>
@@ -109,7 +109,7 @@
               @click="openPreparationModal(publication)"
               style="width: 80px;"
               >
-              Retry
+              {{$t('Retry')}}
             </button>
             <button 
               v-else-if="sessionStatuses[publication._id]?.submitted && publication.mode==='exam' && publication.access ==='multiple'" 
@@ -117,19 +117,19 @@
               @click="openPreparationModal(publication)"
               style="width: 80px;"
               >
-              Retry
+              {{$t('Retry')}}
             </button>
             <button 
               v-else   
             class="btn btn-primary btn-sm" @click="openPreparationModal(publication)">
-            Start Now
+            {{$t('Start Now')}}
             </button>  
             
           </template>
 
           <template v-else>
             <a href="#" @click.prevent="openInfoModal(publication)">
-              More info
+               {{$t('More info')}}
             </a>
           </template>
         </div>
@@ -140,14 +140,15 @@
 
     <!-- Message si aucune publication n'est disponible -->
     <div v-if="publications.length === 0" class="alert alert-info mt-3">
-      No publications available at the moment.
+      {{$t('No publications available at the moment.')}}
     </div>
+  <div class="container mt-4" style="text-align: center;">
+    <hr>
+    <button hidden class="btn btn-danger" @click="handleLogout">{{$t('Disconnect')}}</button>
+  </div>
   </div>
 
-  <div class="container m-4" style="text-align: right;">
-    <hr>
-    <button hidden class="btn btn-danger" @click="handleLogout">Disconnect</button>
-  </div>
+
 
 <!-- <DebugPanel 
     :publications="publications" 
@@ -179,6 +180,7 @@ import InstructionList from './instructionList.vue';
 import ModalStartTest from './ModalStartTest.vue';
 import InfoModal from './infoModal.vue'
 import DebugPanel from '@/components/DebugPanel.vue'
+
 
 const publicationStore = usePublicationStore();
 const responsesStore = useResponsesStore();
@@ -214,15 +216,15 @@ const openInfoModal = (publication) => {
   let message = "Information not available for this session.";
 
   if (session.accessStatus === false) {
-    message = "⛔ Votre accès à cette session a été bloqué par le superviseur.";
+    message = "⛔ Your access to this session has been blocked by the supervisor.";
   } else if (session.abandoned && !session.submitted) {
     if (publication.access === 'multiple') {
-      message = "Ce test a été abandonné. Vous pouvez le relancer.";
+      message = "This test has been abandoned. You can run it again.";
     } else {
-      message = "Vous avez ouvert le test mais ne l'avez pas complété. Veuillez contacter le superviseur.";
+      message = "You have run the test but have not completed it. Please contact the supervisor.";
     }
   } else if (session.submitted) {
-    message = "Vous avez déjà terminé ce test.";
+    message = "You have already completed this test.";
   }
 
   infoModalRef.value?.show(message);
@@ -310,7 +312,7 @@ const confirmStartTest = async () => {
 
   } catch (error) {
     console.error("❌ Erreur confirmStartTest:", error);
-    alert("Erreur lors du démarrage du test. Merci de réessayer.");
+    alert("Error when starting the test. Please try again.");
   }
 };
 

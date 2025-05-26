@@ -30,9 +30,11 @@
 import { ref, computed, watch } from 'vue';
 import { useTestStore } from '../../stores/testStore';
 
+
 const store = useTestStore();
 
 const tokenDebug = ref(localStorage.getItem('token') || '⚠️ aucun');
+console.log(tokenDebug)
 
 // Debug toggle (à supprimer en prod)
 let showDebug = import.meta.env.DEV;

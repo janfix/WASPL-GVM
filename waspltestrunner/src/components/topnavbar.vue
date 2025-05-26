@@ -16,19 +16,19 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active testMode" aria-current="page" href="#">
-              {{ publicationStore.publicationData?.mode }} mode
+              {{ publicationStore.publicationData?.mode }} {{ $t('mode') }}
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#top">
-              🏠Test : {{ testData?.title }}
+              {{ $t('Test') }}: {{ testData?.title }}
             </a>
           </li>
           <li v-if="publicationStore.publicationData?.testMap" class="nav-item">
-            <a class="nav-link" href="#" @click.prevent="$emit('toggle-test-map')">Test Map <i class="fa-solid fa-caret-down"></i></a>
+            <a class="nav-link" href="#" @click.prevent="$emit('toggle-test-map')">{{ $t('Test Map') }}<i class="fa-solid fa-caret-down"></i></a>
           </li>
           <li hidden class="nav-item dropdown" @click="isInfosOpen = !isInfosOpen">
-            <a class="nav-link dropdown-toggle" href="#">Infos</a>
+            <a class="nav-link dropdown-toggle" href="#">{{ $t('Infos') }}</a>
             <ul v-if="isInfosOpen" class="dropdown-menu show" style="font-size: 0.8em; display: block;">
               <li>Test_id:{{ testData?._id }}</li>
               <li>Modif: {{ testData?.metadata }}</li>
@@ -38,9 +38,9 @@
             </ul>
           </li>
           <li v-if="publicationStore.publicationData?.ctools" class="nav-item dropdown" @click="isToolsOpen = !isToolsOpen">
-            <a class="nav-link dropdown-toggle" href="#">Tools</a>
+            <a class="nav-link dropdown-toggle" href="#">{{ $t('Tools') }}</a>
             <ul v-if="isToolsOpen" class="dropdown-menu show" style="display: block;">
-              <li><a class="dropdown-item" href="#">Calculator</a></li>
+              <li><a class="dropdown-item" href="#">{{ $t('Calculator') }}</a></li>
               <li><a class="dropdown-item disabled" href="#">GeoGebra</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item disabled" href="#">Dictionnary</a></li>
@@ -50,7 +50,7 @@
         
 
         <a v-if="publicationStore.publicationData?.timeLimit" class="candidate" href="#">
-          Remaining Time: {{ formattedTime }}
+          {{ $t('Remaining Time') }}: {{ formattedTime }}
           <div class="spinner">⏳</div>
         </a>
 
@@ -60,10 +60,10 @@
             {{ studentName }}
           </a>
           <ul v-if="isUserOpen" class="dropdown-menu text-small show" style="display: block;">
-            <li><a class="dropdown-item" href="#" @click="handleLogout">Sign out</a></li>
-            <li><a class="dropdown-item" href="#" @click="callSuperViser">Call Supervisor</a></li>
-            <li><a class="dropdown-item" href="#" @click="goToPublicationList">Tests List</a></li>
-            <li hidden><a class="dropdown-item" href="#" @click="resetTimerForDebug">Reset Timer</a></li>
+            <li><a class="dropdown-item" href="#" @click="handleLogout">{{ $t('Sign out') }}</a></li>
+            <li><a class="dropdown-item" href="#" @click="callSuperViser">{{ $t('Call Supervisor') }}</a></li>
+            <li><a class="dropdown-item" href="#" @click="goToPublicationList">{{ $t('Tests List') }}</a></li>
+            <li hidden><a class="dropdown-item" href="#" @click="resetTimerForDebug">{{ $t('Reset Timer') }}</a></li>
           </ul>
         </div>
 </ul>
@@ -75,7 +75,7 @@
     <div id="toast-superviser" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
         <div class="toast-body">
-          Le superviseur a été appelé !
+          {{ $t('The Supervior was called !') }}
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
@@ -198,10 +198,10 @@ const timeUp = () => {
   clearInterval(timerInterval);
   localStorage.removeItem(storageKey.value);
   
-  console.log("Time is up!");
+  
   // Émettre l'événement timeUp avant de rediriger
   emit('timeUp');
-  alert("Le temps imparti est écoulé ! Vous allez être redirigé vers la liste des tests.");
+  alert("Your time is up! You will be redirected to the list of tests.");
   router.push('/publications');
 };
 

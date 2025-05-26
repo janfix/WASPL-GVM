@@ -1,0 +1,10 @@
+{
+  "test": {
+    "title": "Titre du test",
+    "description": "Description"
+  },
+  "buttons": {
+    "next": "Page suivante",
+    "previous": "Page précédente"
+  }
+}
