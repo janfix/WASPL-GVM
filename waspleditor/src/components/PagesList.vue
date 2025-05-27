@@ -47,8 +47,15 @@
           @drop="(e) => onDrop(page, e)"
         >
           <template #item="{ element: child }">
-            <div class="card cursor-pointer" :class="{ 'active-card': child.id === activeElementId }"
-              @click="handleElementClick(child.id, child.label)">
+            <div 
+              class="card cursor-pointer" 
+              :class="{ 'active-card': child.id === activeElementId }"
+              @click="handleElementClick(child.id, child.label)"
+              role="button"
+              tabindex="0"
+              @keydown.enter="handleElementClick(child.id, child.label)"
+              @keydown.space.prevent="handleElementClick(child.id, child.label)"
+            >
               <div class="card-body row">
                 <div>
                   <div class="row">
@@ -56,7 +63,7 @@
                       <div class="interaction-type">{{ getInteractionType(child.id) }}</div>
                     </div>
                     <div class="col position-relative" style="text-align: right; margin-top: -15px!important">
-                      <i class="fa-solid fa-pen-to-square editPageLabel" @click="enableEdit(child)"></i>
+                      <i class="fa-solid fa-pen-to-square editPageLabel" @click.stop="enableEdit(child)"></i>
                       <span title="Delete Element!" class="delElement" @click.stop="deleteElement(child.id)">
                         <i class="fa-solid fa-xmark"></i>
                       </span>

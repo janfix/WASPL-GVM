@@ -25,12 +25,18 @@
             👥 {{ pub.connectedStudentsCount }}
           </span>
         </li>
+         <!-- ✅ Message si aucune publication -->
+  <li v-if="sortedPublications.length === 0" class="agenda-item agenda-empty">
+    <span class="agenda-title">
+      No current or forthcoming publications are available.
+    </span>
+  </li>
       </ul>
     </section>
   </template>
   
   <script setup>
-  import { onMounted, ref, computed } from 'vue';
+  import { onMounted, ref, computed,watch } from 'vue';
   import api from '@/services/axios.js';
   import NotificationBell from '@/components/dashboard/NotificationBell.vue'
 
@@ -60,22 +66,29 @@ const handleBellClick = () => {
       year: 'numeric',
     });
   
-  const getStatusLabel = (pub) => {
-    const now = new Date();
-    const start = new Date(pub.startingDate);
-    const end = new Date(pub.endDate);
-    if (now < start) return 'À venir';
-    if (now >= start && now <= end) return 'En cours';
-    return 'Terminée';
+const getStatusLabel = (pub) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const start = new Date(pub.startingDate);
+  start.setHours(0, 0, 0, 0);
+
+  const end = new Date(pub.endDate);
+  end.setHours(0, 0, 0, 0);
+
+  if (today < start) return 'À venir';
+  if (today >= start && today <= end) return 'En cours';
+  return 'Terminée';
+};
+
+const getStatusClass = (pub) => {
+  const label = getStatusLabel(pub);
+  return {
+    upcoming: label === 'À venir',
+    ongoing: label === 'En cours',
   };
-  
-  const getStatusClass = (pub) => {
-    const label = getStatusLabel(pub);
-    return {
-      upcoming: label === 'À venir',
-      ongoing: label === 'En cours',
-    };
-  };
+};
+
   
   const upcomingCount = computed(() =>
     publications.value.filter((p) => getStatusLabel(p) === 'À venir').length
@@ -85,18 +98,28 @@ const handleBellClick = () => {
   );
   
 const sortedPublications = computed(() => {
-  const now = new Date();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   const oneWeekAgo = new Date();
-  oneWeekAgo.setDate(now.getDate() - 7);
+  oneWeekAgo.setDate(today.getDate() - 7);
+  oneWeekAgo.setHours(0, 0, 0, 0);
 
   return publications.value
     .filter((pub) => {
       const end = new Date(pub.endDate);
-      // Garder si la publication n’est pas terminée, ou si elle est terminée depuis moins d’une semaine
+      end.setHours(0, 0, 0, 0);
       return end >= oneWeekAgo;
     })
     .sort((a, b) => new Date(a.startingDate) - new Date(b.startingDate));
 });
+
+watch(publications, (pubs) => {
+  pubs.forEach(pub => {
+    console.log(`🧪 ${pub.publicationName} | start: ${pub.startingDate} | end: ${pub.endDate} | statut: ${getStatusLabel(pub)}`);
+  });
+});
+
 
   </script>
   
@@ -169,5 +192,11 @@ const sortedPublications = computed(() => {
   .agendaBigTitle{
     font-size: 2rem!important;
   }
+
+  .agenda-empty {
+  color: #888;
+  font-style: italic;
+  padding: 0.75rem;
+}
   </style>
   
