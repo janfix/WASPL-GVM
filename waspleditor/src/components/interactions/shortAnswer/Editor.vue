@@ -28,7 +28,7 @@
           </div>
 
           <!-- <p>You can use both : AI or text match to correct the answer and define a score.</p> -->
-          <div class="IAParams">To use AI, you must have configured an AI API. By default, the AI solution is : local AI
+          <div class="IAParams">AI features are not available in that version - But it can be implemented : to use AI, you must have configured an AI API. By default, the AI solution is : local AI
             based on LMstudio + API_URL = "http://localhost:1234/v1/completions" with
             the model: "deepseek-r1-distill-qwen-7b", temperature: 0.1, max_tokens: 1000. Please load the model
             first(loading could be long).

@@ -55,7 +55,7 @@
             <div v-else class="WarnMode warnLearning"></div>
 
             <span class="badge badge-pill" :class="`badge-${publication.mode}`">
-              {{ publication.mode }}
+              {{ $t(publication.mode) }}
             </span>
 
             <strong>{{ publication.publicationName }}</strong> |

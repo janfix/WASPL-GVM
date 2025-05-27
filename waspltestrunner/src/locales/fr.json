@@ -1,8 +1,9 @@
 {
-  "TEST SUMMARY": "RÉSUMÉ DU TEST",
+  "TEST SUMMARY": "SOMMAIRE DES TESTS",
   "Welcome": "Bienvenue",
   "Here are your available tasks": "Voici vos tâches disponibles",
   "formative": "formatif",
+  "FORMATIVE": "formatif",
   "exam": "examen",
   "Group": "Groupe",
   "Test": "Test",

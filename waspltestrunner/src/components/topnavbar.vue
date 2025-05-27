@@ -16,7 +16,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active testMode" aria-current="page" href="#">
-              {{ publicationStore.publicationData?.mode }} {{ $t('mode') }}
+              {{ translatedMode }} {{ $t('mode') }}
             </a>
           </li>
           <li class="nav-item">
@@ -85,11 +85,13 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 import { jwtDecode } from 'jwt-decode';
+import { useI18n } from 'vue-i18n'
 import { usePublicationStore } from '@/stores/usePublicationStore';
 import { useRouter } from 'vue-router';
 import * as bootstrap from 'bootstrap';
 
 const publicationStore = usePublicationStore();
+const { t } = useI18n()
 const router = useRouter();
 
 const emit = defineEmits(['toggle-test-map', 'timeUp']);
@@ -100,6 +102,11 @@ const props = defineProps({
   publicationData: { type: Object, required: false, default: () => ({}) },
   answers: Object
 });
+
+const translatedMode = computed(() => {
+  const mode = publicationStore.publicationData?.mode
+  return mode ? t(mode) : ''
+})
 
 const studentName = ref("Student");
 const isInfosOpen = ref(false);
