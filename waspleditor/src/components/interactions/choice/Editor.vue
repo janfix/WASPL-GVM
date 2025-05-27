@@ -164,16 +164,27 @@ watch(selectedElement, (newElement) => {
 // Quill editor initialization
 onMounted(() => {
   if (quillEditor.value) {
-    quillInstance = new Quill(quillEditor.value, {
-      theme: 'snow',
-      modules: {
-        toolbar: [
-          ['bold', 'italic', 'underline'],
-          [{ list: 'ordered' }, { list: 'bullet' }],
-          ['link', 'image'],
-        ],
+ quillInstance = new Quill(quillEditor.value, {
+  theme: 'snow',
+  modules: {
+    toolbar: {
+      container: [
+        ['bold', 'italic', 'underline'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['link', 'image', 'video'],
+      ],
+      handlers: {
+        video: function () {
+          const url = prompt('Insérer l’URL de la vidéo (YouTube, Vimeo...)');
+          if (url) {
+            const range = this.quill.getSelection();
+            this.quill.insertEmbed(range.index, 'video', url, Quill.sources.USER);
+          }
+        },
       },
-    });
+    },
+  },
+});
 
     // Initialize Quill content if el_RichText exists
     if (selectedElement.value?.el_RichText) {
