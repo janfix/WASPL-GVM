@@ -21,14 +21,14 @@
       <div class="d-flex flex-column gap-2 pageGroup">
         <div class="row">
           <div class="col">
-            <h3>Page {{ index + 1 }}</h3>
+            <h3 style="color:dimgrey">Page {{ index + 1 }}</h3>
           </div>
           <div class="col">
             <div class="Page-actions">
-              <button class="action-btn" @click="addElement(page.id)" title="Add Elements">
+              <button class="action-btn addEl" @click="addElement(page.id)" title="Add Elements">
                 <font-awesome-icon :icon="['fas', 'plus-circle']" />
               </button>
-              <button class="action-btn" @click.stop="deletePage(page.id)" title="Delete Page">
+              <button class="action-btn trashcan" @click.stop="deletePage(page.id)" title="Delete Page">
                 <font-awesome-icon :icon="['fas', 'trash']" />
               </button>
             </div>
@@ -557,5 +557,30 @@ h5 {
   gap: 10px;
   margin-top: 10px;
 }
+.addEl{
+  font-size: 1.4rem;
+  color:#5BA4F7;
+  animation: pulse 1.8s ease-out 6;
+  border-radius: 10px;
+}
+
+.trashcan{
+color:grey;
+ 
+}
+
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 123, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 5px rgba(0, 123, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+
 
 </style>

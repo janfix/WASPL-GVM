@@ -15,15 +15,25 @@ import "@fortawesome/fontawesome-free/js/all.js";
 
 import fr from './locales/fr.json';
 import en from './locales/en.json';
+import it from './locales/it.json';
+import de from './locales/de.json';
+import pt from './locales/pt.json';
+import es from './locales/es.json';
 
-const messages = { fr, en };
+
+const messages = { fr, en, it, de, pt, es };
+const supportedLangs = ['fr', 'en', 'it', 'pt','es', 'de']
 
 window.bootstrap = bootstrap;
 
+// Détection langue navigateur
+const browserLang = navigator.language?.split('-')[0]
+const defaultLang = supportedLangs.includes(browserLang) ? browserLang : 'fr'
+console.log(defaultLang)
 
 const i18n = createI18n({
   legacy: false, // composition API
-  locale: 'en', // langue par défaut
+  locale: defaultLang, // langue par défaut
   fallbackLocale: 'en',
   messages,
 });

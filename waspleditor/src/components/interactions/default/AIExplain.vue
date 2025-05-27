@@ -13,7 +13,7 @@
                    
           <p>AI-based correction relies on three key dimensions:</p>
 
-          <b>1. Who is the student?</b>
+          <b>1. Who are the students?</b>
           <p>Define their level, background, and learning context in the Test Parameters.</p>
 
           <b>2. What is the subject and assessment context?</b>
